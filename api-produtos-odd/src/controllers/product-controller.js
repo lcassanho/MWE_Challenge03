@@ -1,4 +1,3 @@
-const fetch = require('node-fetch')
 const mongoose = require('mongoose');
 const repository = require('../repositories/product-repository')
 
@@ -12,18 +11,7 @@ exports.post = async(req, res, next) => {
     try {
         repository.create(req.body);
         res.status(201).send({message: "Criado com sucesso!"});   
-        const init = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                emailFrom: "cassanholuan@gmail.com",
-                emailTo: "lucca.fiap@gmail.com",
-                subject: "Seu produto foi cadastrado com sucesso!",
-                text: "Sim! Sim! Sim! Seu produto já se encontra na base e esse email foi enviado por uma API contruida em Spring e chamada no Node!",
-            }),
-        };
-        fetch('http://localhost:8080/send-email', init)
-    } catch (error) {
+        } catch (error) {
         console.log(error);
     }
 }

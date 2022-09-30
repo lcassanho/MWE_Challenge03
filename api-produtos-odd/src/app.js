@@ -16,18 +16,14 @@ app.use(function (req, res, next){
     next();
 });
 
-//registrar a model
+// registrar a model
 require('./models/product');
-require('./models/category');
 
-//registrar a rota
+// registrar a rota
 const productRouter = require('./routes/product-route');
-const categoryRouter = require('./routes/category-route');
-const index = require('./routes/index')
 
-app.use('/', index);
+// definir rota
 app.use('/products', productRouter);
-app.use('/categories', categoryRouter);
 
 module.exports = app
 
